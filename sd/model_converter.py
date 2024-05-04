@@ -1,7 +1,10 @@
 import torch
 
-def load_from_standard_weights(input_file: str, device: str) -> dict[str, torch.Tensor]:
+# since the model is made from scratch, the namig of the files might be different. hence the refrences for the CLIP are mapped
+# to the current names of the model. the githhub page where the mapping is taken is listed below:
     # Taken from: https://github.com/kjsman/stable-diffusion-pytorch/issues/7#issuecomment-1426839447
+
+def load_from_standard_weights(input_file: str, device: str) -> dict[str, torch.Tensor]:
     original_model = torch.load(input_file, map_location=device, weights_only = False)["state_dict"]
 
     converted = {}
